@@ -50,35 +50,18 @@ public class listeville {
             } catch (Exception e) {
                 // Gestion des erreurs de saisie (si l'utilisateur n'entre pas un nombre)
                 System.out.println("Erreur de saisie !");
-                sc.next(); // Vide le buffer du scanner
+                sc.next(); 
             }
             
             // Demande si l'utilisateur veut continuer
             System.out.print("Continuer ? (O/N) ");
-            reponse = sc.next(); // Lecture de la réponse
+            reponse = sc.next(); 
             
         } while (reponse.equalsIgnoreCase("O")); // Continue tant que la réponse est "O" ou "o"
         
-        // Message de fin lorsque l'utilisateur quitte
+        // Message de fin
         System.out.println("Au revoir !");
         
         sc.close();
     }
 }
-
-/*Explications supplémentaires :
-Structure des données :
-
-Deux tableaux parallèles (villes et messages) maintiennent la correspondance entre les villes et leurs messages d'accueil.
-
-Boucle principale :
-
-Le programme tourne en continu jusqu'à ce que l'utilisateur réponde autre chose que "O" à la question "Continuer ?".
-
-Gestion des erreurs :
-
-Le bloc try-catch permet de gérer les cas où l'utilisateur n'entre pas un nombre valide.
-
-
-Ce programme offre une interface simple et intuitive pour choisir une ville et voir son message d'accueil, avec une gestion robuste des entrées utilisateur
-/* */
