@@ -30,7 +30,7 @@ public class listeville {
         // Boucle principale du programme
         do {
             // Affichage de la liste des villes avec leurs numéros
-            System.out.println("Choisissez une ville :");
+            System.out.println("Bonjour, Choisissez une ville :");
             for (int i = 0; i < villes.length; i++) {
                 System.out.println(i + " - " + villes[i]); // Format: "0 - Paris"
             }
@@ -51,7 +51,7 @@ public class listeville {
                 // Gestion des erreurs de saisie (si l'utilisateur n'entre pas un nombre)
                 System.out.println("Erreur de saisie !");
                 sc.next(); 
-            }
+             }
             
             // Demande si l'utilisateur veut continuer
             System.out.print("Continuer ? (O/N) ");
@@ -59,9 +59,9 @@ public class listeville {
             
         } while (reponse.equalsIgnoreCase("O")); // Continue tant que la réponse est "O" ou "o"
         
-        // Message de fin
+        
         System.out.println("Au revoir !");
         
         sc.close();
-    }
+           }
 }
