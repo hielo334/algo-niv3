@@ -1,7 +1,7 @@
 package algoniv3;
 import java.util.Scanner;
-public class exo1 {
-    
+
+public class exo1 { // Les noms de classes en Java doivent commencer par une majuscule (convention)
     
     // Fonction qui additionne
     public static int additionner(int a, int b) {
@@ -11,21 +11,18 @@ public class exo1 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         
-        // Lecture
+        // Lecture des entrées
         System.out.print("a = ");
         int a = scanner.nextInt();
         
         System.out.print("b = ");
         int b = scanner.nextInt();
         
-        // fonction d'addition
-        int resultat = additionner(a, b);
+        // Utilisation de la fonction d'addition
+        int resultat = additionner(a, b); // On utilise la variable déclarée dans la fonction
         
-        // Affichage
-        System.out.println("\nresultat = a + b");
-        System.out.println("\nresultat vaut " + resultat);
+        System.out.println("Le résultat vaut " + resultat); // Affiche le résultat
         
         scanner.close();
     }
 }
-

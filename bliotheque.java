@@ -1,15 +1,77 @@
 package algoniv3;
-
-import java.util.*;
-import java.math.*;
-import java.time.*;
-import java.time.format.*;
-import java.time.temporal.ChronoUnit;
-
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 public class bliotheque {
     
-        // ==================== AXO ALGO NIV I ==================== //
+        // ==================== FONCTIONS ALGO NIV I ==================== //
    
+// Fonction qui affiche les valeurs d'un tableau
+    public static void afficherTableau(int[] tableau) {
+        System.out.print(",");
+        for (int i = 0; i < tableau.length; i++) {
+            System.out.print(tableau[i]);
+            if (i < tableau.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println(",");
+    }
+    
+ // Fonction pour afficher la liste
+    public static void afficherListe(ArrayList<String> liste) {
+        if (liste.isEmpty()) {
+            System.out.println("La liste est vide.");
+        } else {
+            System.out.println("Contenu de la liste :");
+            for (int i = 0; i < liste.size(); i++) {
+                System.out.println((i+1) + ". " + liste.get(i));
+            }
+        }
+    }
+    
+    // Fonction pour ajouter un nom à la liste
+    public static void ajouterNom(ArrayList<String> liste, String nom) {
+        liste.add(nom);
+        System.out.println(nom + " a été ajouté à la liste.");
+    }
+    
+    // Fonction pour supprimer un nom s'il existe
+    public static void supprimerNom(ArrayList<String> liste, String nom) {
+        if (liste.contains(nom)) {
+            liste.remove(nom);
+            System.out.println(nom + " a été supprimé de la liste.");
+        } else {
+            System.out.println(nom + " n'existe pas dans la liste.");
+        }
+    }
+    
+    // Fonction pour parcourir et supprimer un nom
+    public static void parcourirEtSupprimer(ArrayList<String> liste, String nom) {
+        boolean trouve = false;
+        for (int i = 0; i < liste.size(); i++) {
+            if (liste.get(i).equalsIgnoreCase(nom)) {
+                liste.remove(i);
+                System.out.println(nom + " a été supprimé de la liste.");
+                trouve = true;
+                i--; // Nécessaire car la taille de la liste a diminué
+            }
+        }
+        if (!trouve) {
+            System.out.println(nom + " n'a pas été trouvé dans la liste.");
+        }
+    }
+    
+
+
+//Fonction afficher liste
+
+  public static void afficherListe(List<String> list) {
+        System.out.println("\nListe:");
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println((i + 1) + ". " + list.get(i));
+        }
+    }
 
 // Fonction qui additionne
 public static int additionner(int a, int b) {
@@ -98,7 +160,7 @@ public static boolean retraitAutorise(int solde, int montant) {
     return montant > 0 && montant <= solde;
 }
 
-// Fonction pour effectuer le retrait
+// Fonction effectué le retrait
 public static int effectuerRetrait(int solde, int montant) {
     return solde - montant;
 }
@@ -143,6 +205,7 @@ public static boolean lireBooleen(Scanner scanner, String message) {
         }
     }
 }
+}
 
 /** POUR INTÉGRER :
 
@@ -172,232 +235,4 @@ public static boolean lireBooleen(Scanner scanner, String message) {
  5. ADAPTATION :
     - Modifiez les types de retour ou paramètres si besoin
     - Ajoutez des try-catch pour la gestion des erreurs
-
-//SUITE !!!
-
-//FAIT AVEC IA//
-
-    // ==================== MATHÉMATIQUES ==================== //
-    /**
-     * Calcule la différence entre deux nombres
-     */
-    public static double difference(double a, double b) {
-        return a - b;
-    }
-    
-    /**
-     * Calcule le produit de deux nombres
-     */
-    public static double produit(double a, double b) {
-        return a * b;
-    }
-      
-    /**
-     * Calcule le pourcentage d'une valeur
-     * @param valeur La valeur de base
-     * @param pourcentage Le pourcentage à appliquer (ex: 10 pour 10%)
-     */
-    public static double calculerPourcentage(double valeur, double pourcentage) {
-        return valeur * (pourcentage / 100);
-    }
-    
-    /**
-     * Augmente une valeur d'un certain pourcentage
-     */
-    public static double augmenterPourcentage(double valeur, double pourcentage) {
-        return valeur * (1 + pourcentage/100);
-    }
-    
-    /**
-     * Diminue une valeur d'un certain pourcentage
-     */
-    public static double diminuerPourcentage(double valeur, double pourcentage) {
-        return valeur * (1 - pourcentage/100);
-    }
-    
-    /**
-     * Calcule la factorielle d'un nombre entier
-     */
-    public static BigInteger factorielle(int n) {
-        if(n < 0) throw new IllegalArgumentException("n doit être positif");
-        BigInteger resultat = BigInteger.ONE;
-        for(int i = 2; i <= n; i++) {
-            resultat = resultat.multiply(BigInteger.valueOf(i));
-        }
-        return resultat;
-    }
-    
-    // ==================== MANIPULATION DE TEXTE ==================== //
-    
-    /**
-     * Inverse une chaîne de caractères
-     */
-    public static String inverserString(String input) {
-        return new StringBuilder(input).reverse().toString();
-    }
-    
-    /**
-     * Met la première lettre de chaque mot en majuscule
-     */
-    public static String capitaliser(String texte) {
-        if(texte == null || texte.isEmpty()) return texte;
-        
-        String[] mots = texte.split(" ");
-        StringBuilder resultat = new StringBuilder();
-        
-        for(String mot : mots) {
-            if(!mot.isEmpty()) {
-                resultat.append(Character.toUpperCase(mot.charAt(0)))
-                       .append(mot.substring(1).toLowerCase())
-                       .append(" ");
-            }
-        }
-        
-        return resultat.toString().trim();
-    }
-    
-    // ==================== DATES ET HEURES ==================== //
-    
-    /**
-     * Retourne la date et heure actuelle formatée
-     */
-    public static String dateHeureActuelle() {
-        return LocalDateTime.now()
-                .format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
-    }
-    
-    /**
-     * Formate une date selon le pattern spécifié
-     */
-    public static String formaterDate(LocalDate date, String pattern) {
-        return date.format(DateTimeFormatter.ofPattern(pattern));
-    }
-    
-    /**
-     * Calcule la différence en jours entre deux dates
-     */
-    public static long differenceJours(LocalDate date1, LocalDate date2) {
-        return Math.abs(ChronoUnit.DAYS.between(date1, date2));
-    }
-    
-    // ==================== TABLEAUX ET COLLECTIONS ==================== //
-    
-    /**
-     * Trouve la valeur maximale dans un tableau de doubles
-     */
-    public static double max(double[] tableau) {
-        if(tableau == null || tableau.length == 0) {
-            throw new IllegalArgumentException("Tableau vide ou null");
-        }
-        double max = tableau[0];
-        for(double val : tableau) {
-            if(val > max) max = val;
-        }
-        return max;
-    }
-    
-    /**
-     * Trouve la valeur minimale dans un tableau de doubles
-     */
-    public static double min(double[] tableau) {
-        if(tableau == null || tableau.length == 0) {
-            throw new IllegalArgumentException("Tableau vide ou null");
-        }
-        double min = tableau[0];
-        for(double val : tableau) {
-            if(val < min) min = val;
-        }
-        return min;
-    }
-    
-    /**
-     * Calcule la moyenne des valeurs d'un tableau
-     */
-    public static double moyenne(double[] tableau) {
-        if(tableau == null || tableau.length == 0) {
-            throw new IllegalArgumentException("Tableau vide ou null");
-        }
-        double somme = 0;
-        for(double val : tableau) {
-            somme += val;
-        }
-        return somme / tableau.length;
-    }
-    
-    /**
-     * Trie un tableau d'entiers par ordre croissant
-     */
-    public static void trier(int[] tableau) {
-        Arrays.sort(tableau);
-    }
-    
-    // ==================== CONVERSIONS ==================== //
-    
-    /**
-     * Convertit un nombre en binaire
-     */
-    public static String versBinaire(int nombre) {
-        return Integer.toBinaryString(nombre);
-    }
-    
-    // ==================== UTILITAIRES DIVERS ==================== //
-    
-    /**
-     * Génère un nombre aléatoire entre min et max (inclus)
-     */
-    public static int nombreAleatoire(int min, int max) {
-        if(min >= max) throw new IllegalArgumentException("Max doit être > min");
-        return new Random().nextInt(max - min + 1) + min;
-    }
-    
-    /**
-     * Vérifie si un nombre est premier
-     */
-    public static boolean estPremier(int nombre) {
-        if(nombre <= 1) return false;
-        if(nombre <= 3) return true;
-        if(nombre % 2 == 0 || nombre % 3 == 0) return false;
-        
-        for(int i = 5; i * i <= nombre; i += 6) {
-            if(nombre % i == 0 || nombre % (i + 2) == 0) {
-                return false;
-            }
-        }
-        return true;
-    }
-    
-    /**
-     * Arrondit un nombre à un nombre spécifié de décimales
-     */
-    public static double arrondir(double valeur, int decimales) {
-        if(decimales < 0) throw new IllegalArgumentException("Nombre de décimales invalide");
-        BigDecimal bd = new BigDecimal(Double.toString(valeur));
-        bd = bd.setScale(decimales, RoundingMode.HALF_UP);
-        return bd.doubleValue();
-    }
-}
-
-
-//*importation */
-
-//import *com.mabibliotheque.Utils;*
-
-//*utilisation */
-// Mathématiques
-/*   double total = Utils.somme(5.5, 3.2);
-double pourcentage = Utils.calculerPourcentage(200, 15);
-
-   Texte
-boolean palindrome = Utils.estPalindrome("kayak");
-String capitalise = Utils.capitaliser("bonjour le monde");
-
-   Dates
-String maintenant = Utils.dateHeureActuelle();
-
-   Tableaux
-double[] valeurs = {1.5, 2.3, 4.7};
-double max = Utils.max(valeurs);
-
-   Conversions
-double fahrenheit = Utils.celsiusVersFahrenheit(25); 
-*/
+*//* */

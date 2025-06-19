@@ -19,8 +19,6 @@ public class exo8 {
         Scanner scanner = new Scanner(System.in);
         
         // Demande des informations avec le format exact demandé
-
-  
         System.out.println("Votre prénom ?");
         System.out.print("\n");
         String prenom = scanner.nextLine();
@@ -37,16 +35,30 @@ public class exo8 {
         System.out.print("\n");
         String motDePasse = scanner.nextLine();
         
-        System.out.println("Confirmer votre mot de passe ?");
-        System.out.print("\n");
-        String confirmationMotDePasse = scanner.nextLine();
+        // Boucle pour la confirmation du mot de passe
+        boolean confirmationCorrecte = false;
+        int tentatives = 3;
         
-        // Vérification des mots de passe
-        if (verifierMotDePasse(motDePasse, confirmationMotDePasse)) {
-            System.out.println(genererConfirmation(prenom, nom, email));
-        } else {
+        while (!confirmationCorrecte && tentatives > 0) {
+            System.out.println("Confirmer votre mot de passe ?");
+            System.out.print("\n");
+            String confirmationMotDePasse = scanner.nextLine();
+            
+            if (verifierMotDePasse(motDePasse, confirmationMotDePasse)) {
+                confirmationCorrecte = true;
+                System.out.println(genererConfirmation(prenom, nom, email));
+            } else {
+                tentatives--;
+                if (tentatives > 0) {
+                    System.out.println("Erreur de confirmation. Il vous reste " + tentatives + " tentative(s).");
+                }
+            }
+        }
+        
+        if (!confirmationCorrecte) {
             System.out.println("Inscription annulée");
         }
-         scanner.close();
-           } 
+        
+        scanner.close();
+    } 
 }

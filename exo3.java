@@ -26,7 +26,7 @@ public class exo3 {
         System.out.print("a = ");
         int a = scanner.nextInt();
 
-        System.out.print("b = ");
+        System.out.print("b = "); //test
         int b = scanner.nextInt();
 
         // addition en utilisant la fonction

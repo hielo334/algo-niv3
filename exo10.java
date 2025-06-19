@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class exo10 {
     
-    // Fonction
+    // Fonction poser une question
     public static int poserQuestion(Scanner scanner, String question, String bonneReponse) {
         System.out.println(question);
         System.out.print("\n");

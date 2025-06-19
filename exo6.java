@@ -14,7 +14,7 @@ public class exo6 {
         
         // lire le prénom
         System.out.print("prenom = ");
-        String prenom = scanner.nextLine();
+        String prenom = scanner.nextLine(); //test//
         
         // lire l'âge
         System.out.print("\nage = ");
