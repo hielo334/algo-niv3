@@ -111,7 +111,7 @@ public class listevilleavecajout {
             
         } while (true);  // Boucle infinie (quittée par le 'break' de l'option 3)
         
-        System.out.println("\nAu revoir ! À bientôt pour de nouveaux voyages !");
+        System.out.println("\nAu revoir !");
         
         sc.close();
     }
