@@ -17,22 +17,32 @@ public class exo13 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         
-        try {
-            // saisi
-            System.out.println("Donner une taille en centimètre ?");
-            System.out.print("\n");
-            
-           // lire l'entée
-            int centimetres = scanner.nextInt();
-            
-            // Conversion et affichage
-            double metres = convertirEnMetres(centimetres);
-            afficherConversion(centimetres, metres);
-            
-        } catch (Exception e) {
-            System.out.println("\nErreur : Veuillez entrer un nombre entier valide");
-        } finally {
-            scanner.close();
+        while (true) {
+            try {
+                // saisi
+                System.out.println("Donner une taille en centimètre (ou 'q' pour quitter) ?");
+                System.out.print("\n");
+                
+                // lire l'entrée
+                String input = scanner.next();
+                
+                // Vérifier si l'utilisateur veut quitter
+                if (input.equalsIgnoreCase("q")) {
+                    System.out.println("Fin du programme.");
+                    break;
+                }
+                
+                // Convertir l'entrée en entier
+                int centimetres = Integer.parseInt(input);
+                
+                // Conversion et affichage
+                double metres = convertirEnMetres(centimetres);
+                afficherConversion(centimetres, metres);
+                
+            } catch (NumberFormatException e) {
+                System.out.println("\nErreur : Veuillez entrer un nombre entier valide ou 'q' pour quitter");
+            }
         }
+        scanner.close();
     }
 }
